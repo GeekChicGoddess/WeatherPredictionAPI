@@ -1,0 +1,367 @@
+
+body {
+    background-color: #DDD4C4;
+    background: url(../img/parkpainting.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Peddana', serif;
+
+}
+.masterWrapper {
+    margin: auto;
+    max-width: 1700px;
+    text-align: center;
+}
+#top {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.topDivs {
+    display: inline-block;
+    width: 30%;
+}
+#topLeft {
+    margin-top: 1.5vw;
+}
+#limitsButton {
+    cursor: url(../img/black-umbrella-hi.png), pointer;
+    color: #35292a;
+    float: left;
+    margin-left: -2vw;
+    margin-top: 1vw;
+    display: inline-block;
+    font-size: 2.1vw;
+    font-weight: bold;
+    background-color: #998783;
+    width: 3.7vw;
+    height: 3.7vw;
+    border-radius: 50%;
+    text-align: center;
+    background-image: linear-gradient(top, #7a6661, #514542);
+    box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+    0vw .1vw .3vw rgba(0,0,0,0.18),
+    inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+    inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+    border: .15vw solid rgba(0,0,0,0.50);
+    border-top: .1vw solid
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    text-decoration: none;
+}
+#options{
+    background-color: #847072;
+    width: 67%;
+    padding: 1vw;
+    border-radius: 5%;
+    box-shadow: inset 0vw 0vw 1vw .8vw rgba(0,0,0,.3);
+    margin-left: 4vw;
+    display: none;
+}
+#upperButtons {
+    width: 100%;
+}
+#lowerButtons {
+    width: 100%;
+}
+#lowerButtons .buttonWraps{
+    margin-top: 1vw;
+}
+.buttonWraps {
+    display: inline-block;
+    width: 32%;
+}
+.optionButtons {
+    cursor: url(../img/black-umbrella-hi.png), pointer;
+    display: inline-block;
+    font-size: 1.4vw;
+    background-color: #998783;
+    color: #35292a;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    text-align: center;
+    background-image: linear-gradient(top, #7a6661, #514542);
+    box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+    0vw .1vw .3vw rgba(0,0,0,0.18),
+    inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+    inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+    border: .15vw solid rgba(0,0,0,0.50);
+    border-top: .1vw solid
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    text-decoration: none;
+    text-shadow: 0 -.1vw .1vw #3f312d;
+}
+
+#topCenter {
+}
+h1 {
+    font-size: 4vw;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+    line-height: 70%;
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 3vw;
+    font-weight: 300;
+    padding: 0;
+    margin: 0%;
+}
+#topRight {
+
+}
+#daysOptions{
+    cursor: url(../img/black-umbrella-hi.png), pointer;
+    float: left;
+    margin-left: 3vw;
+    background-color: #847072;
+    width: 70%;
+    padding: 1vw;
+    border-radius: 5%;
+    box-shadow: inset 0vw 0vw 1vw .8vw rgba(0,0,0,.3);
+    display: none;
+}
+#daysDisplayButton {
+    cursor: url(../img/black-umbrella-hi.png), pointer;
+    float: right;
+    color: #35292a;
+    margin-right: -2vw;
+    margin-top: -1vw;
+    display: inline-block;
+    font-size: 2.1vw;
+    font-weight: bold;
+    background-color: #998783;
+    width: 3.7vw;
+    height: 3.7vw;
+    border-radius: 50%;
+    text-align: center;
+    background-image: linear-gradient(top, #7a6661, #514542);
+    box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+    0vw .1vw .3vw rgba(0,0,0,0.18),
+    inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+    inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+    border: .15vw solid rgba(0,0,0,0.50);
+    border-top: .1vw solid
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    text-decoration: none;
+}
+
+#forcastDivsContainer {
+    height: 17vw;
+    min-height: 160px;
+    width: 90vw;
+    margin: 0;
+    overflow: hidden;
+}
+.forecastDivs {
+    background-color: #DDD4C4;
+    opacity: .9;
+    display: inline-block;
+    border: solid .1em black;
+    font-size: 1.8vw;
+    font-family: 'Peddana', serif;
+    width: 25%;
+    text-align: left;
+    padding-left: 1vw;
+}
+
+h3{
+    margin: 0;
+    font-size: 3vw;
+}
+.temp{
+    font-weight: bold;
+    font-size: 2.3vw;
+}
+.titles {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2vw;
+}
+
+#bottom {
+    text-align: left;
+    font-size: 2vw;
+    margin-top: .5vw;
+
+}
+
+#map {
+    height: 30vw;
+    width: 70%;
+    float: left;
+    min-height: 300px;
+    overflow: hidden;
+}
+#weatherInputs {
+    width: 28%;
+    display: inline-block;
+    margin-left: 1vw;
+
+}
+#weatherInputs input{
+
+    font-size: 1.5vw;
+}
+label {
+    color: #7B4E47;
+    opacity: .9;
+    background-color: #DCD7D6;
+    border-radius: 1%;
+    margin-bottom: 1vw;
+}
+
+#weatherButton {
+    background-color: #998783;
+    color: #35292a;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    text-align: center;
+    background-image: linear-gradient(top, #7a6661, #514542);
+    box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+    0vw .1vw .3vw rgba(0,0,0,0.18),
+    inset -.3vw -.4vw .1vw rgba(0,0,0,0.35),
+    inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+    border: .15vw solid rgba(0,0,0,0.50);
+    border-top: .1vw solid
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    text-decoration: none;
+    text-shadow: 0 -.1vw .1vw #3f312d;
+    cursor: url(../img/black-umbrella-hi.png), pointer;
+}
+
+#smallScreenTop {
+    display: none;
+}
+
+
+/*#weatherButton:hover,*/
+/*#weatherButton.hover{*/
+/*box-shadow: inset 0 0 0 2px #27496d,0 5px 15px #193047;*/
+/*}*/
+
+/*#weatherButton:active,*/
+/*#weatherButton.active {*/
+/*box-shadow: inset 0 0 0 2px #27496d,inset 0 5px 30px #193047;*/
+/*}*/
+
+@media screen and (max-width: 1285px){
+    .buttonWraps {
+        width: 100%;
+    }
+    #lowerButtons .buttonWraps {
+        margin-top: auto;
+    }
+    #options {
+        width: 8vw;
+    }
+}
+@media screen and (max-width: 800px){
+    body {
+        background: none repeat;
+        background-color: #B0C9C8;
+    }
+    #smallScreenTop {
+        display: block;
+    }
+    #bigScreenTop {
+        display: none;
+    }
+    .topDivs {
+        display: block;
+    }
+    .topDivs {
+        width: 100%;
+        display: block;
+    }
+    #daysDisplayButton{
+        display: none;
+    }
+    #limitsButton {
+        display: none;
+        cursor: pointer;
+    }
+    #options {
+        display: block;
+        width: 15%;
+        margin: .5% 0% .5% 39%;
+
+    }
+    #daysOptions {
+        display: block;
+        width: 15%;
+        margin: .5% 0% .5% 39%;
+    }
+    #upperButtons {
+        display: table;
+    }
+    #lowerButtons {
+        display: table;
+    }
+    .optionButtons {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 3vw;
+        width: 4vw;
+    }
+    .buttonWraps {
+        display: table;
+        cursor: pointer;
+
+    }
+    #forcastDivsContainer {
+        height: auto;
+        width: 100%;
+        margin-left: 10%;
+
+    }
+    .forecastDivs {
+        display: block;
+        min-width: 300px;
+        font-size: 4.5vw;
+
+    }
+    h3 {
+        font-size: 5vw;
+
+    }
+    .temp{
+        font-size: 4vw;
+    }
+    .titles {
+        font-size: 4vw;
+    }
+    #map {
+        display: block;
+        width: 100%;
+        min-width: 370px;
+    }
+
+    #weatherInputs {
+        display: block;
+        width: 100%;
+        font-size: 4vw;
+    }
+    #weatherInputs input {
+        font-size: 4vw;
+    }
+}
