@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather NB</title>
+    <link href="https://fonts.googleapis.com/css?family=Peddana" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style type="text/css">
+
+        body {
+            background-color: #DDD4C4;
+            background: url(img/parkpainting.jpg) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Peddana', serif;
+
+        }
+        .masterWrapper {
+            margin: auto;
+            max-width: 1700px;
+            text-align: center;
+        }
+        #top {
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+        .topDivs {
+            display: inline-block;
+            width: 30%;
+        }
+        #topLeft {
+            margin-top: 1.5vw;
+        }
+        #limitsButton {
+            color: #35292a;
+            float: left;
+            margin-left: -2vw;
+            margin-top: 1vw;
+            display: inline-block;
+            font-size: 2.1vw;
+            font-weight: bold;
+            background-color: #998783;
+            width: 3.7vw;
+            height: 3.7vw;
+            border-radius: 50%;
+            text-align: center;
+            background-image: linear-gradient(top, #7a6661, #514542);
+            box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+            0vw .1vw .3vw rgba(0,0,0,0.18),
+            inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+            inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+            border: .15vw solid rgba(0,0,0,0.50);
+            border-top: .1vw solid
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            -ms-font-smoothing: antialiased;
+            text-decoration: none;
+        }
+        #options{
+            background-color: #847072;
+            width: 67%;
+            padding: 1vw;
+            border-radius: 5%;
+            box-shadow: inset 0vw 0vw 1vw .8vw rgba(0,0,0,.3);
+            margin-left: 4vw;
+            display: none;
+        }
+        #upperButtons {
+            width: 100%;
+        }
+        #lowerButtons {
+            width: 100%;
+        }
+        #lowerButtons .buttonWraps{
+            margin-top: 1vw;
+        }
+        .buttonWraps {
+            display: inline-block;
+            width: 32%;
+        }
+        .optionButtons {
+            display: inline-block;
+            font-size: 1.4vw;
+            background-color: #998783;
+            color: #35292a;
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            text-align: center;
+            background-image: linear-gradient(top, #7a6661, #514542);
+            box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+            0vw .1vw .3vw rgba(0,0,0,0.18),
+            inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+            inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+            border: .15vw solid rgba(0,0,0,0.50);
+            border-top: .1vw solid
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            -ms-font-smoothing: antialiased;
+            text-decoration: none;
+            text-shadow: 0 -.1vw .1vw #3f312d;
+        }
+
+        #topCenter {
+        }
+        h1 {
+            font-size: 4vw;
+            font-weight: 300;
+            text-align: center;
+            margin: 0;
+            line-height: 70%;
+        }
+
+
+        h2 {
+            text-align: center;
+            font-size: 3vw;
+            font-weight: 300;
+            padding: 0;
+            margin: 0%;
+        }
+        #topRight {
+
+        }
+        #daysOptions{
+            float: left;
+            margin-left: 3vw;
+            background-color: #847072;
+            width: 70%;
+            padding: 1vw;
+            border-radius: 5%;
+            box-shadow: inset 0vw 0vw 1vw .8vw rgba(0,0,0,.3);
+            display: none;
+        }
+        #daysDisplayButton {
+            float: right;
+            color: #35292a;
+            margin-right: -2vw;
+            margin-top: -1vw;
+            display: inline-block;
+            font-size: 2.1vw;
+            font-weight: bold;
+            background-color: #998783;
+            width: 3.7vw;
+            height: 3.7vw;
+            border-radius: 50%;
+            text-align: center;
+            background-image: linear-gradient(top, #7a6661, #514542);
+            box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+            0vw .1vw .3vw rgba(0,0,0,0.18),
+            inset -.2vw -.3vw .1vw rgba(0,0,0,0.35),
+            inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+            border: .15vw solid rgba(0,0,0,0.50);
+            border-top: .1vw solid
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            -ms-font-smoothing: antialiased;
+            text-decoration: none;
+        }
+
+        #forcastDivsContainer {
+            height: 17vw;
+            min-height: 160px;
+            width: 90vw;
+            margin: 0;
+            overflow: hidden;
+        }
+        .forecastDivs {
+            background-color: #DDD4C4;
+            opacity: .9;
+            display: inline-block;
+            border: solid .1em black;
+            font-size: 1.8vw;
+            font-family: 'Peddana', serif;
+            width: 25%;
+            text-align: left;
+            padding-left: 1vw;
+        }
+
+        h3{
+            margin: 0;
+            font-size: 3vw;
+        }
+        .temp{
+            font-weight: bold;
+            font-size: 2.3vw;
+        }
+        .titles {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 2vw;
+        }
+
+        #bottom {
+            text-align: left;
+            font-size: 2vw;
+            margin-top: .5vw;
+
+        }
+
+        #map {
+            height: 30vw;
+            width: 70%;
+            float: left;
+            min-height: 300px;
+            overflow: hidden;
+        }
+        #weatherInputs {
+            width: 28%;
+            display: inline-block;
+            margin-left: 1vw;
+
+        }
+        #weatherInputs input{
+
+            font-size: 1.5vw;
+        }
+        label {
+
+            color: #7B4E47;
+            opacity: .9;
+            background-color: #DCD7D6;
+            border-radius: 1%;
+            margin-bottom: 1vw;
+        }
+        #weatherButton {
+            background-color: #998783;
+            color: #35292a;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50%;
+            text-align: center;
+            background-image: linear-gradient(top, #7a6661, #514542);
+            box-shadow: 0 0 .2vw  rgba(0,0,0,0.35),
+            0vw .1vw .3vw rgba(0,0,0,0.18),
+            inset -.3vw -.4vw .1vw rgba(0,0,0,0.35),
+            inset 0vw 2vw 2vw rgba(255,255,255,0.10);
+            border: .15vw solid rgba(0,0,0,0.50);
+            border-top: .1vw solid
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            -ms-font-smoothing: antialiased;
+            text-decoration: none;
+            text-shadow: 0 -.1vw .1vw #3f312d;
+        }
+
+        #smallScreenTop {
+            display: none;
+        }
+
+
+        /*#weatherButton:hover,*/
+        /*#weatherButton.hover{*/
+        /*box-shadow: inset 0 0 0 2px #27496d,0 5px 15px #193047;*/
+        /*}*/
+
+        /*#weatherButton:active,*/
+        /*#weatherButton.active {*/
+        /*box-shadow: inset 0 0 0 2px #27496d,inset 0 5px 30px #193047;*/
+        /*}*/
+
+        @media screen and (max-width: 1285px){
+            .buttonWraps {
+                width: 100%;
+            }
+            #lowerButtons .buttonWraps {
+                margin-top: auto;
+            }
+            #options {
+                width: 8vw;
+            }
+        }
+        @media screen and (max-width: 800px){
+            body {
+                background: none repeat;
+                background-color: #B0C9C8;
+            }
+            #smallScreenTop {
+                display: block;
+            }
+            #bigScreenTop {
+                display: none;
+            }
+            .topDivs {
+                display: block;
+            }
+            .topDivs {
+                width: 100%;
+                display: block;
+            }
+            #daysDisplayButton{
+                display: none;
+            }
+            #limitsButton {
+                display: none;
+                cursor: pointer;
+            }
+            #options {
+                display: block;
+                width: 15%;
+                margin: .5% 0% .5% 39%;
+
+            }
+            #daysOptions {
+                display: block;
+                width: 15%;
+                margin: .5% 0% .5% 39%;
+            }
+            #upperButtons {
+                display: table;
+            }
+            #lowerButtons {
+                display: table;
+            }
+            .optionButtons {
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 3vw;
+                width: 4vw;
+            }
+            .buttonWraps {
+                display: table;
+                cursor: pointer;
+
+            }
+            #forcastDivsContainer {
+                height: auto;
+                width: 100%;
+                margin-left: 10%;
+
+            }
+            .forecastDivs {
+                display: block;
+                min-width: 300px;
+                font-size: 4.5vw;
+
+            }
+            h3 {
+                font-size: 5vw;
+
+            }
+            .temp{
+                font-size: 4vw;
+            }
+            .titles {
+                font-size: 4vw;
+            }
+            #map {
+                display: block;
+                width: 100%;
+                min-width: 370px;
+            }
+
+            #weatherInputs {
+                display: block;
+                width: 100%;
+                font-size: 4vw;
+            }
+            #weatherInputs input {
+                font-size: 4vw;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="masterWrapper">
+    <div id="bigScreenTop">
+        <div id="top">
+            <div id="topLeft" class="topDivs">
+                <div class="stopButtonJump">
+                    <div id="limitsButton">Limit</div>
+                </div>
+                <div id="options">
+                    <div id="upperButtons">
+                        <div class="buttonWraps" id="dayButton"><label class="buttonLabels">Day Tmp</label><div class="optionButtons">D</div></div>
+                        <div class="buttonWraps" id="pressureButton"><label class="buttonLabels">Pressure</label><div class="optionButtons">P</div></div>
+                        <div class="buttonWraps" id="iconButton"><label class="buttonLabels">sm Icon</label><div class="optionButtons">I</div></div>
+                    </div>
+                    <div id="lowerButtons">
+                        <div class="buttonWraps" id="nightButton"><label class="buttonLabels">Nght Tmp</label><div class="optionButtons">N</div></div>
+                        <div class="buttonWraps" id="windButton"><label class="buttonLabels">Windspeed</label><div class="optionButtons">W</div></div>
+                        <div class="buttonWraps" id="humidityButton"><label class="buttonLabels">Humidity</label><div class="optionButtons">H</div></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="topCenter" class="topDivs">
+                <h1>Weather Predictions</h1>
+                <h2 id="cityName"></h2>
+            </div>
+            <div id="topRight" class="topDivs">
+                <div id="daysOptions">
+                    <div id="daysButtons">
+                        <div class="buttonWraps" id="threeDaysButton"><label class="buttonLabels">3 Days</label><div class="optionButtons">D</div></div>
+                        <div class="buttonWraps" id="sixDaysButton"><label class="buttonLabels">6 Days</label><div class="optionButtons">P</div></div>
+                        <div class="buttonWraps" id="fifteenDaysButton"><label class="buttonLabels">15 Days</label><div class="optionButtons">I</div></div>
+                    </div>
+                </div>
+                <div id="daysDisplayButton">Days</div>
+            </div>
+        </div>
+    </div>
+    <div id="smallScreenTop">
+        <div id="top">
+            <div id="topLeft" class="topDivs">
+                <h1>Weather Predictions</h1>
+                <h2 id="cityName"></h2>
+            </div>
+            <div id="topCenter" class="topDivs">
+                <div class="stopButtonJump">
+                    <div id="limitsButton">Limit</div>
+                </div>
+                <div id="options">
+                    <div id="upperButtons">
+                        <div class="buttonWraps" id="dayButton"><label class="buttonLabels">Day Tmp</label><div class="optionButtons">D</div></div>
+                        <div class="buttonWraps" id="pressureButton"><label class="buttonLabels">Pressure</label><div class="optionButtons">P</div></div>
+                        <div class="buttonWraps" id="iconButton"><label class="buttonLabels">sm Icon</label><div class="optionButtons">I</div></div>
+                    </div>
+                    <div id="lowerButtons">
+                        <div class="buttonWraps" id="nightButton"><label class="buttonLabels">Nght Tmp</label><div class="optionButtons">N</div></div>
+                        <div class="buttonWraps" id="windButton"><label class="buttonLabels">Windspeed</label><div class="optionButtons">W</div></div>
+                        <div class="buttonWraps" id="humidityButton"><label class="buttonLabels">Humidity</label><div class="optionButtons">H</div></div>
+                    </div>
+                </div>
+            </div>
+            <div id="topRight" class="topDivs">
+                <div id="daysOptions">
+                    <div id="daysButtons">
+                        <div class="buttonWraps" id="threeDaysButton"><label class="buttonLabels">3 Days</label><div class="optionButtons">D</div></div>
+                        <div class="buttonWraps" id="sixDaysButton"><label class="buttonLabels">6 Days</label><div class="optionButtons">P</div></div>
+                        <div class="buttonWraps" id="fifteenDaysButton"><label class="buttonLabels">15 Days</label><div class="optionButtons">I</div></div>
+                    </div>
+                </div>
+                <div id="daysDisplayButton">Days</div>
+            </div>
+        </div>
+    </div>
+    <div id="forcastDivsContainer">
+    </div>
+
+    <div id = "bottom" class="row">
+        <div class = "" id="map"></div>
+
+        <div class="" id="weatherInputs">
+            <div>
+                <label>Latitude&nbsp</label>
+                <input id="lat" type="number" value="29.6708">
+            </div>
+            <div>
+                <label id="lonLabel">Longitude</label>
+                <input id="lon" type="number" value="-98.4288268">
+            </div>
+            <div>
+                <label>Input Address</label>
+                <input size="50vw" type="text" id="findAddress">
+            </div>
+            <div id="weatherButton">GO</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDykvV2wJZcdlJ8pfHGv_iEgmPBQhqlggU"></script>
+<script>
+
+    $(document).ready(function(){
+        var styles = {
+            retro: [
+                {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+                {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+                {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+                {
+                    featureType: 'administrative',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#c9b2a6'}]
+                },
+                {
+                    featureType: 'administrative.land_parcel',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#dcd2be'}]
+                },
+                {
+                    featureType: 'administrative.land_parcel',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#ae9e90'}]
+                },
+                {
+                    featureType: 'landscape.natural',
+                    elementType: 'geometry',
+                    stylers: [{color: '#dfd2ae'}]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [{color: '#dfd2ae'}]
+                },
+                {
+                    featureType: 'poi',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#93817c'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'geometry.fill',
+                    stylers: [{color: '#a5b076'}]
+                },
+                {
+                    featureType: 'poi.park',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#447530'}]
+                },
+                {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{color: '#f5f1e6'}]
+                },
+                {
+                    featureType: 'road.arterial',
+                    elementType: 'geometry',
+                    stylers: [{color: '#fdfcf8'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry',
+                    stylers: [{color: '#f8c967'}]
+                },
+                {
+                    featureType: 'road.highway',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#e9bc62'}]
+                },
+                {
+                    featureType: 'road.highway.controlled_access',
+                    elementType: 'geometry',
+                    stylers: [{color: '#e98d58'}]
+                },
+                {
+                    featureType: 'road.highway.controlled_access',
+                    elementType: 'geometry.stroke',
+                    stylers: [{color: '#db8555'}]
+                },
+                {
+                    featureType: 'road.local',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#806b63'}]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'geometry',
+                    stylers: [{color: '#dfd2ae'}]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#8f7d77'}]
+                },
+                {
+                    featureType: 'transit.line',
+                    elementType: 'labels.text.stroke',
+                    stylers: [{color: '#ebe3cd'}]
+                },
+                {
+                    featureType: 'transit.station',
+                    elementType: 'geometry',
+                    stylers: [{color: '#dfd2ae'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'geometry.fill',
+                    stylers: [{color: '#b9d3c2'}]
+                },
+                {
+                    featureType: 'water',
+                    elementType: 'labels.text.fill',
+                    stylers: [{color: '#92998d'}]
+                }
+            ],
+
+            hiding: [
+                {
+                    featureType: 'poi.business',
+                    stylers: [{visibility: 'off'}]
+                },
+                {
+                    featureType: 'transit',
+                    elementType: 'labels.icon',
+                    stylers: [{visibility: 'off'}]
+                }
+            ]
+        };
+
+        var daysCount = 3;
+        var lat = 29.4241;
+        var lon = -98.4936;
+        var weatherCenter = { lat: lat, lng: lon };
+        var map;
+        var mapDisplay = document.getElementById('map');
+        var options = {
+            zoom: 4,
+            center: {
+                lat: lat,
+                lng: lon
+            }
+        };
+        var counter = 0;
+        var date = new Date();
+        var day = (date.getDay());
+        var datenumber = date.getDate();
+        var month = date.getMonth();
+        var monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var dayArray =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var optionsOnOff = {
+            dayButton: "on",
+            nightButton: "on",
+            pressureButton: "on",
+            humidityButton: "on",
+            windButton: "on",
+            iconButton: "on"
+        }
+        var whichButton;
+        var buttonEvent = false;
+
+        function initMap() {
+
+            map = new google.maps.Map(mapDisplay, options);
+            map.setOptions({styles: styles.retro});
+
+        }
+        $("#limitsButton").click(function () {
+            $("#options").toggle();
+        });
+        $("#options .buttonWraps").click(function () {
+            whichButton = $(this).attr("id");
+            buttonEvent = true;
+            toggleDisplays(whichButton);
+        });
+
+
+        function toggleDisplays (whichButton){
+
+            switch (whichButton){
+                case "dayButton":
+                    $(".dayTemp").toggle();
+                    if (optionsOnOff.dayButton === "on" && buttonEvent){
+                        optionsOnOff.dayButton= "off";
+                    }
+                    else if (optionsOnOff.dayButton === "off"  && buttonEvent){
+                        optionsOnOff.dayButton = "on";
+                    }
+                    break;
+                case "nightButton":
+                    $(".nightTemp").toggle();
+                    if (optionsOnOff.nightButton  === "on" && buttonEvent){
+                        optionsOnOff.nightButton = "off";
+                    }
+                    else if (optionsOnOff.nightButton  === "off" && buttonEvent){
+                        optionsOnOff.nightButton = "on";
+                    }
+                    break;
+                case "pressureButton":
+                    $(".pressure").toggle();
+                    if (optionsOnOff.pressureButton === "on" && buttonEvent){
+                        optionsOnOff.pressureButton = "off";
+                    }
+                    else if (optionsOnOff.pressureButton === "off" && buttonEvent){
+                        optionsOnOff.pressureButton = "on";
+                    }
+                    break;
+                case "humidityButton":
+                    $(".humidity").toggle();
+                    if (optionsOnOff.humidityButton === "on" && buttonEvent){
+                        optionsOnOff.humidityButton = "off";
+                    }
+                    else if (optionsOnOff.humidityButton === "off" && buttonEvent) {
+                        optionsOnOff.humidityButton = "on";
+                    }
+                    break;
+                case "windButton":
+                    $(".wind").toggle();
+                    if (optionsOnOff.windButton === "on" && buttonEvent){
+                        optionsOnOff.windButton = "off";
+                    }
+                    else if (optionsOnOff.windButton === "off" && buttonEvent){
+                        optionsOnOff.windButton = "on";
+                    }
+                    break;
+                case "iconButton":
+                    $("img").toggle();
+                    if (optionsOnOff.iconButton === "on" && buttonEvent){
+                        optionsOnOff.iconButton = "off";
+                    }
+                    else if (optionsOnOff.iconButton === "off" && buttonEvent){
+                        optionsOnOff.iconButton = "on";
+                    }
+                    break;
+
+            }
+            buttonEvent = false;
+        }
+
+        $("#daysDisplayButton").click(function () {
+            $("#daysOptions").toggle();
+        });
+        initMap();
+        var marker = new google.maps.Marker({
+            position: {
+                lat: lat,
+                lng: lon
+            },
+            map: map,
+            draggable: true
+        });
+
+        $("#daysButtons .buttonWraps").click(function(){
+
+            $('.forecastDivs').remove();
+            day = (date.getDay());
+            var whichDays = $(this).attr("id");
+            switch (whichDays){
+                case "threeDaysButton":
+                    daysCount = 3;
+                    break;
+                case "sixDaysButton":
+                    daysCount = 6;
+                    $("#forcastDivsContainer").css("width", "100%");
+                    $("#forcastDivsContainer").css("height", "20%");
+                    break;
+                case "fifteenDaysButton":
+                    daysCount = 15;
+                    $("#forcastDivsContainer").css("width", "100%");
+                    $("#forcastDivsContainer").css("height", "20%");
+            }
+
+            getWeather();
+            getCurrentWeather();
+
+
+
+
+
+            $(".pressure").prepend("<br>");
+        });
+        function getCurrentWeather () {
+            $.get("http://api.openweathermap.org/data/2.5/weather", {
+                APPID: "cf5050c0c4303753a04239e865a2dd5c",
+                lat: lat,
+                lon: lon,
+                units: "imperial"
+            }).done(function (data) {
+                var currenttemp = Math.floor(data.main.temp);
+                var contentString = "<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>Current Temperature: "+currenttemp + "&deg;"+ "<br>Current Conditions: "+ data.weather[0].description +"";
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                infowindow.open(map, marker);
+            });
+        }
+
+        function getWeather () {
+            $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+                APPID: "cf5050c0c4303753a04239e865a2dd5c",
+                lat: lat,
+                lon: lon,
+                units: "imperial",
+                cnt: daysCount
+            }).done(function (data) {
+                counter = 0;
+                data.list.forEach(function (i) {
+                    if (day==7){
+                        day=0;
+                    }
+                    var forecastFill = "";
+                    forecastFill += "<div id='forecast"+counter+"' class='forecastDivs'>";
+                    forecastFill += "<h3>"+dayArray[day]+" "+ monthArray[month]+ " "+datenumber+"</h3>";
+                    forecastFill += "<img src='http://openweathermap.org/img/w/" + i.weather[0].icon + ".png'>&nbsp&nbsp";
+                    forecastFill += "<span class='temp dayTemp'>" + parseInt(i.temp.day) + "&deg;Day </span>&nbsp";
+                    forecastFill += "<span class='temp nightTemp'>" + parseInt(i.temp.night) + "&deg; Night</span><br>";
+                    forecastFill += "<span class='titles weathMain'>" + i.weather[0].main + ":</span>  " + i.weather[0].description+"&nbsp&nbsp";
+                    forecastFill += "<span class='humidity'><span class='titles'>Humidity:</span>   " + i.humidity +"</span><br>";
+                    forecastFill += "<span class='wind'><span class='titles'>Wind: </span>  " + i.speed + "&nbsp &nbsp</span>";
+                    forecastFill += "<span class='pressure'><span class='titles'>Pressure: </span>  " + i.pressure+"</span></div>";
+                    $("#forcastDivsContainer").append(forecastFill);
+                    counter++;
+                    day++;
+                    if ((month == 8 || month == 3 || month ==  5 || month == 10) && datenumber==30){
+                        datenumber=1;
+                        month++;
+                    }
+                    else if ((month == 9 || month == 11 || month == 0 || month == 2 || month == 4 || month == 6 || month == 7) && datenumber==31){
+                        datenumber=1;
+                        month++;
+                    }
+                    else if (month==2 && datenumber==28){
+                        datenumber = 1;
+                        month++;
+                    }
+                    else datenumber++;
+                });
+                var cityName = data.city.name;
+                $("#cityName").text(cityName);
+                for(key in optionsOnOff) {
+                    if (optionsOnOff[key] === "off") {
+                        toggleDisplays(key);
+                    }
+                }
+            }).fail(function (data) {
+                console.log(data.statusText);
+            });
+        }
+        $.ajax(getWeather());
+        $.ajax(getCurrentWeather());
+
+
+        marker.addListener('dragend', function(event){
+
+            for (var c = 0; c < daysCount; c++){
+                id = "#forecast"+c;
+                $(id).remove();
+            }
+            day = (date.getDay());
+            lat = event.latLng.lat();
+            lon = event.latLng.lng();
+            options.center.lng = lon;
+            options.center.lat = lat;
+            $.ajax(getWeather());
+            $.ajax(getCurrentWeather());
+
+        });
+
+        $("#weatherButton").click(function(){
+            for (var c = 0; c < daysCount; c++){
+                id = "#forecast"+c;
+                console.log(id);
+                $(id).remove();
+            }
+            day = (date.getDay());
+            var address = $("#findAddress").val();
+            if (address == "") {
+                lat = parseFloat($("#lat").val());
+                lon = parseFloat($("#lon").val());
+                weatherCenter = {lat: lat, lng: lon};
+                options.center.lat = lat;
+                options.center.lng = lon;
+                getWeather();
+                marker.setPosition({lat: lat, lng: lon});
+                getCurrentWeather();
+
+            }
+            else {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ "address": address }, function(results, status) {
+                    console.log(results);
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        lat = results[0].geometry.location.lat();
+                        lon =  results[0].geometry.location.lng();
+                        options.center.lat = lat;
+                        options.center.lng = lon;
+                        getWeather();
+                        marker.setPosition({lat: lat, lng: lon})
+                        getCurrentWeather();
+                    } else {
+                        alert("Geocoding was not successful - STATUS: " + status);
+                    }
+                });
+            }
+
+        })
+
+    });
+</script>
+</body>
+</html>
