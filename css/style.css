@@ -6,6 +6,11 @@ body {
     font-family: 'Peddana', serif;
 
 }
+
+#smallScreenTop {   /*HIDE ALTERNATE TOP SECTION FOR MOBILE VIEW */
+    display: none;
+}
+
 .masterWrapper {
     margin: auto;
     max-width: 1700px;
@@ -99,8 +104,6 @@ body {
     text-shadow: 0 -.1vw .1vw #3f312d;
 }
 
-#topCenter {
-}
 h1 {
     font-size: 4vw;
     font-weight: 300;
@@ -117,9 +120,7 @@ h2 {
     padding: 0;
     margin: 0%;
 }
-#topRight {
 
-}
 #daysOptions{
     cursor: url(../img/black-umbrella-hi.png), pointer;
     float: left;
@@ -131,6 +132,7 @@ h2 {
     box-shadow: inset 0vw 0vw 1vw .8vw rgba(0,0,0,.3);
     display: none;
 }
+
 #daysDisplayButton {
     cursor: url(../img/black-umbrella-hi.png), pointer;
     float: right;
@@ -217,6 +219,7 @@ h3{
 
     font-size: 1.5vw;
 }
+
 label {
     color: #7B4E47;
     opacity: .9;
@@ -248,21 +251,6 @@ label {
     text-shadow: 0 -.1vw .1vw #3f312d;
     cursor: url(../img/black-umbrella-hi.png), pointer;
 }
-
-#smallScreenTop {
-    display: none;
-}
-
-
-/*#weatherButton:hover,*/
-/*#weatherButton.hover{*/
-/*box-shadow: inset 0 0 0 2px #27496d,0 5px 15px #193047;*/
-/*}*/
-
-/*#weatherButton:active,*/
-/*#weatherButton.active {*/
-/*box-shadow: inset 0 0 0 2px #27496d,inset 0 5px 30px #193047;*/
-/*}*/
 
 @media screen and (max-width: 1285px){
     .buttonWraps {
